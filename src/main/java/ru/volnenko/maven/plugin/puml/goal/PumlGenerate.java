@@ -10,8 +10,6 @@ import org.apache.maven.project.MavenProject;
 import ru.volnenko.maven.plugin.puml.parser.RootParser;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 @Mojo(name = "generate", defaultPhase = LifecyclePhase.GENERATE_RESOURCES)
 public class PumlGenerate extends AbstractMojo {
@@ -20,15 +18,6 @@ public class PumlGenerate extends AbstractMojo {
     private MavenProject project;
 
     private final RootParser rootParser = new RootParser();
-
-    @Parameter(property = "paths")
-    private List<String> paths = new ArrayList<>();
-
-    @Parameter(property = "files")
-    private List<String> files = new ArrayList<>();
-
-    @Parameter(property = "src")
-    private String src = "";
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
