@@ -34,8 +34,7 @@ public class PumlGenerate extends AbstractMojo {
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
-        File file = new File(project.getBasedir(), "/src/main/plantuml");
-        System.out.println(file);
+        final File file = new File(project.getBasedir(), "/src/main/plantuml");
         final File buildPath = new File(project.getBuild().getDirectory());
         buildPath.mkdirs();
 
