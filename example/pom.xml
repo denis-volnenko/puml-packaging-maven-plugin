@@ -30,9 +30,6 @@
                 <artifactId>puml-packaging-maven-plugin</artifactId>
                 <version>1.0.0</version>
                 <extensions>true</extensions>
-                <configuration>
-                    <src>${project.basedir}/main/plantuml</src>
-                </configuration>
             </plugin>
         </plugins>
     </build>

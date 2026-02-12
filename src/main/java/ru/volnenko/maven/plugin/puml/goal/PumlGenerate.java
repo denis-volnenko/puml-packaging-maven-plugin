@@ -19,9 +19,17 @@ public class PumlGenerate extends AbstractMojo {
 
     private final RootParser rootParser = new RootParser();
 
+    @Parameter(property = "src")
+    private String src;
+
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
-        final File file = new File(project.getBasedir(), "/src/main/plantuml");
+        File file;
+        if (src == null || src.isEmpty()) {
+            file =  new File(project.getBasedir(), "/src/main/plantuml");
+        } else {
+            file = new File(src);
+        }
         final File buildPath = new File(project.getBuild().getDirectory());
         buildPath.mkdirs();
 
