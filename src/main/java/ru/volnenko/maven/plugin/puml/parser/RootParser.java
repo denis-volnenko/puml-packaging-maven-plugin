@@ -46,6 +46,11 @@ public final class RootParser {
     }
 
     @SneakyThrows
+    public void save(@NonNull final File build) {
+        FileUtils.fileWrite(build, text());
+    }
+
+    @SneakyThrows
     public String text() {
         final StringBuilder stringBuilder = new StringBuilder();
         for (final String file: files(file.getAbsolutePath())) {

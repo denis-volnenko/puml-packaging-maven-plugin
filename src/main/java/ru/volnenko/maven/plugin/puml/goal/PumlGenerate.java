@@ -40,15 +40,7 @@ public class PumlGenerate extends AbstractMojo {
 
         final String sourceName = project.getBuild().getFinalName() + "." + project.getPackaging();
         final File build = new File(project.getBuild().getDirectory(), sourceName);
-
-        try {
-            build.createNewFile();
-            String text = rootParser.file(file).text();
-            System.out.println(text);
-            FileUtils.fileWrite(build, text);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        rootParser.file(file).save(build);
     }
 
 }
