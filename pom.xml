@@ -21,7 +21,6 @@
         <extension.wagon.groupId>org.apache.maven.wagon</extension.wagon.groupId>
         <extension.wagon.artifactId>wagon-webdav-jackrabbit</extension.wagon.artifactId>
         <extension.wagon.version>3.5.2</extension.wagon.version>
-        <aspectj.version>1.8.10</aspectj.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -40,30 +39,14 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.8.11</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.dataformat</groupId>
-            <artifactId>jackson-dataformat-yaml</artifactId>
-            <version>2.8.11</version>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.38</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-project</artifactId>
             <version>2.2.1</version>
         </dependency>
         <dependency>
-            <groupId>com.github.hemantsonu20</groupId>
-            <artifactId>json-merge</artifactId>
-            <version>1.0.2</version>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.42</version>
         </dependency>
     </dependencies>
 
@@ -78,7 +61,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-plugin-plugin</artifactId>
-                <version>3.2</version>
+                <version>3.6.0</version>
                 <configuration>
                     <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
                 </configuration>

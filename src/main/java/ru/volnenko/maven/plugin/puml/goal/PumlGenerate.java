@@ -1,6 +1,5 @@
 package ru.volnenko.maven.plugin.puml.goal;
 
-import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -16,25 +15,41 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Mojo(name = "package", defaultPhase = LifecyclePhase.PACKAGE)
-public class PumlPackage extends AbstractMojo {
+@Mojo(name = "generate", defaultPhase = LifecyclePhase.GENERATE_RESOURCES)
+public class PumlGenerate extends AbstractMojo {
 
     @Parameter(defaultValue = "${project}", required = true, readonly = true)
     private MavenProject project;
 
+    private final RootParser rootParser = new RootParser();
+
+    @Parameter(property = "paths")
+    private List<String> paths = new ArrayList<>();
+
+    @Parameter(property = "files")
+    private List<String> files = new ArrayList<>();
+
+    @Parameter(property = "src")
+    private String src = "";
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
+        File file = new File(project.getBasedir(), "/src/main/plantuml");
+        System.out.println(file);
         final File buildPath = new File(project.getBuild().getDirectory());
         buildPath.mkdirs();
 
         final String sourceName = project.getBuild().getFinalName() + "." + project.getPackaging();
         final File build = new File(project.getBuild().getDirectory(), sourceName);
 
-
-
-        final Artifact artifact =  project.getArtifact();
-        artifact.setFile(build);
+        try {
+            build.createNewFile();
+            String text = rootParser.file(file).text();
+            System.out.println(text);
+            FileUtils.fileWrite(build, text);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
